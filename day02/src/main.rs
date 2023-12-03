@@ -16,33 +16,36 @@ fn main() {
             let game_id_det_index = line.find(':').unwrap();
             nl.replace_range(..game_id_det_index, "");
             
-            let mut is_game_valid = true;
+            let mut blue = 0;
+            let mut green = 0;
+            let mut red = 0;
             for set in nl.split(';') {
-                let mut blue = 0;
-                let mut green = 0;
-                let mut red = 0;
 
                 for value in set.split(',') {
                     println!("{value}");
                     if value.contains('r') {
-                        red = value.split('r').next().unwrap().parse::<i32>().unwrap();
+                        let number = value.split('r').next().unwrap().parse::<i32>().unwrap();
+                        if number > red {
+                            red = number
+                        }
                     } else if value.contains('b') {
                         
-                        blue = value.split('b').next().unwrap().parse::<i32>().unwrap();
+                        let number = value.split('b').next().unwrap().parse::<i32>().unwrap();
+                        if number > blue {
+                            blue = number
+                        }
                         
                     } else {
-                        green = value.split('g').next().unwrap().parse::<i32>().unwrap();
+                        let number = value.split('g').next().unwrap().parse::<i32>().unwrap();
+                        if number > green {
+                            green = number
+                        }
                     }
                 }
 
-                if blue > 14 || red > 12 || green > 13 {
-                    is_game_valid = false;
-                }
             }
             
-            if is_game_valid {
-                result += game_id + 1;
-            }
+            result += blue * red * green;
         }
         println!("{result}");
     }
