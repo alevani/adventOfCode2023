@@ -5,13 +5,18 @@ use std::path::Path;
 fn main() {
     // File hosts.txt must exist in the current path
     if let Ok(lines) = read_lines("./input.txt") {
-        // Consumes the iterator, returns an (Optional) String
-        for line in lines {
-            if let Ok(ip) = line {
-                println!("{}", ip);
-            }
-        }
+        let input = lines.flatten().collect();
+        part_one(input);
+        // part_two(input);
     }
+}
+
+fn part_one(input: Vec<String>) {
+
+}
+
+fn part_two(input: Vec<String>) {
+
 }
 
 // The output is wrapped in a Result to allow matching on errors
