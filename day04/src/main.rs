@@ -33,16 +33,16 @@ fn part_one(input: Vec<String>) {
             .map(|f| f.parse::<i32>().unwrap())
             .collect::<Vec<i32>>();
 
-        result += my_numbers
+        let points = my_numbers
             .iter()
-            .map(|n| {
-                if winning_numbers.contains_key(n) {
-                    2
-                } else {
-                    1
-                }
-            })
-            .product::<i32>();
+            .filter_map(|n| winning_numbers.get(n))
+            .count();
+
+        result += if points == 0 {
+            0
+        } else {
+            2_i32.pow(points as u32 - 1)
+        };
     }
     println!("result: {result}");
 }
