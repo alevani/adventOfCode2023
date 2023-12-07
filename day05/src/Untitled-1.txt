@@ -1,0 +1,19 @@
+ // 79.. 79 + 14 (93)
+            // [10, 80, 5] .. 80 -> 10, 81 -> 11, 82 -> 12, 83 -> 13, 84 -> 14
+            // if a mapping make one or more seend go higher or below said range, then
+            // it should become a range of its own.
+            // 10..14 | 79..79 | 85 .. 93
+
+            // 82.. 82 + 14 (96)
+            // [10, 80, 5] .. 80 -> 10, 81 -> 11, 82 -> 12, 83 -> 13, 84 -> 14
+            // 12..14 || 82..81 don't add, OK || 85..96
+            // todo store each new range in its own array, and replace the seeds range array
+            // by said array afterward
+
+
+            // todo I guess I should replace the old range by the two new ones..?
+                    // todo so that remaining seeds can be mapped too.
+                    // println!("Found overlap: {}..{}", intersection.0, intersection.1);
+                    // println!("mapped_seeds_range: {mapped_seeds_lower_range}..{mapped_seeds_upper_range}");
+                    // println!("lower_bound_range: {lower_bound_lower_range}..{lower_bound_upper_range}");
+                    // println!("upper_bound_range: {upper_bound_lower_range}..{upper_bound_upper_range}");
