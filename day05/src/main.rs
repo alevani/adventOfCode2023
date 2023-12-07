@@ -263,11 +263,9 @@ fn part_two(_: Vec<String>) {
             let mut temps_seeds: Vec<i64> = Vec::new();
 
             while !seeds.is_empty() {
-                println!("seeds before {seeds:?}");
                 let chunk2 = seeds.pop().unwrap();
                 let chunk1 = seeds.pop().unwrap();
-                println!("seeds after {seeds:?}");
-
+                
                 let lower_range = chunk1;
                 let upper_range = chunk1 + chunk2;
 
@@ -309,16 +307,11 @@ fn part_two(_: Vec<String>) {
                 } else {
                     temps_seeds.push(lower_range);
                     temps_seeds.push(upper_range - lower_range);
-                    println!("temps_seeds: {:?}", temps_seeds);
                 }
             }
             seeds.append(&mut temps_seeds);
-            println!("temps_seeds: {:?}", temps_seeds);
         }
         seeds.append(&mut seeds_with_new_ranges);
-        println!("seeds_with_new_ranges: {:?}", seeds_with_new_ranges);
-        println!("seeds: {:?}", seeds);
-        // panic!();
     }
     println!(
         "{:?}",
