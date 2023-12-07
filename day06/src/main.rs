@@ -12,8 +12,11 @@ fn main() {
 }
 
 fn part_one(input: Vec<String>) {
+    //! OBS: 
+    //! Definitely saw a much nicer way to do it with variance and binomials. 
+    //! I will leave it to brute force since I want to catch up to day 07
     let times = [48, 93, 84, 66];
-    let distances = vec![261, 1192, 1019, 1063];
+    let distances: Vec<i64> = vec![261, 1192, 1019, 1063];
 
     let mut ways = Vec::new();
     for (time, dist) in times.iter().zip(distances) {
@@ -29,7 +32,23 @@ fn part_one(input: Vec<String>) {
     println!("{}", ways.iter().product::<i32>());
 }
 
-fn part_two(input: Vec<String>) {}
+fn part_two(input: Vec<String>) {
+    let times = [48938466];
+    let distances: Vec<i64> = vec![261119210191063];
+
+    let mut ways = Vec::new();
+    for (time, dist) in times.iter().zip(distances) {
+        let mut way = 0;
+        for i in 1..time + 1 {
+            if i * (time - i) >= dist {
+                way += 1;
+            }
+        }
+        ways.push(way);
+    }
+
+    println!("{}", ways.iter().product::<i32>());
+}
 
 // The output is wrapped in a Result to allow matching on errors
 // Returns an Iterator to the Reader of the lines of the file.
